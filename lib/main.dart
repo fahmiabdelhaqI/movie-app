@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:movie_apps/presentation/home/home_screen.dart';
 import 'package:movie_apps/presentation/login/login.dart';
-import 'package:movie_apps/presentation/main_screen.dart';
 import 'package:movie_apps/routes/routes.dart';
+import 'package:movie_apps/ui/home/home_body.dart';
+import 'package:movie_apps/ui/home/home_screen.dart';
+import 'package:movie_apps/ui/splashscreen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +26,10 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      // home: const LoginPage(),
-      initialRoute: MainScreen.routeName,
+      // initialRoute: MainScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       onGenerateRoute: Routes.generateRoute,
+      builder: EasyLoading.init(),
     );
   }
 }
