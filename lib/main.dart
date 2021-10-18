@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:movie_apps/presentation/home/home_screen.dart';
-import 'package:movie_apps/presentation/login/login.dart';
 import 'package:movie_apps/routes/routes.dart';
 import 'package:movie_apps/ui/home/home_body.dart';
 import 'package:movie_apps/ui/home/home_screen.dart';

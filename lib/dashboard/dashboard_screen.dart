@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_apps/presentation/profile/profile_screen.dart';
+
 import 'package:movie_apps/ui/favorite/favorite_screen.dart';
 import 'package:movie_apps/ui/home/home_screen.dart';
-import 'package:movie_apps/ui/profile/profile_screens.dart';
+import 'package:movie_apps/ui/profile/profile_screen.dart';
 import 'package:movie_apps/ui/seacrh/search_screen.dart';
 import 'package:movie_apps/values/colors.dart';
 import 'package:movie_apps/values/textstyle.dart';
@@ -19,10 +19,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndexBody = 0;
 
   final List<Widget> _dashboardBodyWidgets = <Widget>[
-    const HomeScreens(),
-    const SearchScreens(),
-    const FavoriteScreens(),
-    const ProfileScreen(),
+     HomeScreens(),
+     SearchScreens(),
+     FavoriteMoviesScreen(),
+     ProfileScreen(),
     // const ProfileScreens(),
     const Placeholder(color: Colors.red),
     const Placeholder(

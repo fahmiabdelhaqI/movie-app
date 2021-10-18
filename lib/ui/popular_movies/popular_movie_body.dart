@@ -1,39 +1,67 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
-import 'package:movie_apps/values/textstyle.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive/hive.dart';
 
-class PopularMovieBody extends StatelessWidget {
-  const PopularMovieBody({
+import '../../data/movies/movie_api_client.dart';
+import '../_model/movie_item.dart';
+
+class MovieGridItemWidget extends StatelessWidget {
+  final VoidCallback onTap;
+  final MovieItem movie;
+
+  const MovieGridItemWidget({
     Key? key,
     required this.movie,
+    required this.onTap,
   }) : super(key: key);
-
-  final MovieItemResponse movie;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Container(
-            width: 50,
-            height: 80,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage('$imagebaseurl${movie.posterPath}'),
-                fit: BoxFit.fill,
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: InkWell(
+              onTap: onTap,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                child: CachedNetworkImage(
+                  imageUrl: '$imagebaseurl${movie.image}',
+                  width: 120,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        Text(
-          '${movie.title}',
-          maxLines: 2,
-          style: text18,
-        ),
-      ],
+          Positioned(
+            right: 0,
+            top: 0,
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                  ),
+                ),
+                child: const FaIcon(
+                  FontAwesomeIcons.bookmark,
+                  size: 18,
+                ),
+                
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

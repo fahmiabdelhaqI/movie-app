@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/dashboard/dashboard_screen.dart';
-import 'package:movie_apps/presentation/main_screen.dart';
+
 import 'package:movie_apps/ui/login/login_screen.dart';
 import 'package:movie_apps/ui/movie_detail/movie_detail_screen.dart';
 import 'package:movie_apps/ui/popular_movies/popular_movie_screen.dart';
-import 'package:movie_apps/ui/profile/profile_screens.dart';
+
 import 'package:movie_apps/ui/splashscreen/splash_screen.dart';
 
 class Routes {

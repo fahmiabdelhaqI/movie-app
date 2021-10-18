@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_apps/presentation/profile/profile_details/profile_picture.dart';
-import 'package:movie_apps/presentation/profile/profile_details/profile_settings.dart';
-import 'package:movie_apps/presentation/profile/profile_details/profile_watched.dart';
-import 'package:movie_apps/values/textstyle.dart';
+import 'package:movie_apps/ui/profile/profile_details/profile_picture.dart';
+import 'package:movie_apps/ui/profile/profile_details/profile_settings.dart';
+import 'package:movie_apps/ui/profile/profile_details/profile_watched.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

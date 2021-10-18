@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
 import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/ui/_model/movie_item.dart';
 import 'package:movie_apps/ui/movie_detail/movie_detail_screen.dart';
+import 'package:movie_apps/ui/popular_movies/movieGridWidget/movie_gridview_widget.dart';
 import 'package:movie_apps/ui/popular_movies/popular_movie_body.dart';
 
 class PopularMoviesScreen extends StatefulWidget {
@@ -24,37 +26,9 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  MovieItemResponse movie = snapshot.data![index];
-                  return InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        MovieDetailScreen.routeName,
-                        arguments: MovieDetailArguments(
-                          movieId: movie.id ?? 0,
-                          movieName: movie.title ?? '',
-                        ),
-                      );
-                    },
-                    child: PopularMovieBody(movie: movie),
-                  );
-                  // ListTile(
-                  //   onTap: () {
-                  //     Navigator.pushNamed(
-                  //       context,
-                  //       MovieDetailScreen.routeName,
-                  //       arguments: MovieDetailArguments(
-                  //         movieId: movie.id ?? 0,
-                  //         movieName: movie.title ?? '',
-                  //       ),
-                  //     );
-                  //   },
-                  //   title: Text('${movie.title}'),
-                  // );
-                },
+               List<MovieItemResponse> movies = snapshot.data!;
+              return MovieGridViewWidget(
+                movie: movies.map((e) => MovieItem.fromMovieItemResponse(e)).toList(),
               );
             } else {
               return Text('Empty');
@@ -67,3 +41,4 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
     );
   }
 }
+
