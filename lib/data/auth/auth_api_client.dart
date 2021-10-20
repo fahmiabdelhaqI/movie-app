@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:movie_apps/data/auth/auth_api_path.dart';
 import 'package:movie_apps/data/auth/model/guest_response.dart';
 import 'package:movie_apps/data/dio_logging.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 
 const String keyGuestSessionId = 'GUEST_SESSION_ID';
 

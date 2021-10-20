@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 
 class MovieHorizontalListItemWidget extends StatelessWidget {
   const MovieHorizontalListItemWidget({

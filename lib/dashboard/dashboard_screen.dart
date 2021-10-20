@@ -19,22 +19,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndexBody = 0;
 
   final List<Widget> _dashboardBodyWidgets = <Widget>[
-     HomeScreens(),
-     SearchScreens(),
+     const HomeScreens(),
+     const SearchScreens(),
      FavoriteMoviesScreen(),
-     ProfileScreen(),
-    // const ProfileScreens(),
-    const Placeholder(color: Colors.red),
-    const Placeholder(
-      color: Colors.blue,
-    ),
-    const Placeholder(
-      color: Colors.green,
-    ),
+     const ProfileScreen(),
   ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: IndexedStack(
         index: _selectedIndexBody,
         children: _dashboardBodyWidgets,

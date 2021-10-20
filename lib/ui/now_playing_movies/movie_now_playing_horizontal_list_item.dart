@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
+import 'package:movie_apps/ui/_model/movie_item.dart';
 import 'package:movie_apps/values/textstyle.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class MovieNowPlayingHorizontalListItemWidget extends StatelessWidget {
-  final MovieItemResponse movieItemResponse;
+   final MovieItem movie;
   final VoidCallback onTap;
   const MovieNowPlayingHorizontalListItemWidget({
     Key? key,
-    required this.movieItemResponse,
+    required this.movie,
     required this.onTap,
   }) : super(key: key);
 
@@ -29,7 +30,7 @@ class MovieNowPlayingHorizontalListItemWidget extends StatelessWidget {
                 color: Colors.white,
                 image: DecorationImage(
                   image: NetworkImage(
-                      '$imagebaseurl${movieItemResponse.posterPath}'),
+                      '$imagebaseurl${movie.image}'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -41,7 +42,7 @@ class MovieNowPlayingHorizontalListItemWidget extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 5),
                   width: 150,
                   child: Text(
-                    '${movieItemResponse.title}',
+                    '${movie.title}',
                     maxLines: 2,
                     style: titleTextStyle,
                   ),
@@ -49,22 +50,23 @@ class MovieNowPlayingHorizontalListItemWidget extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    'Release Date: ',
-                    style: text18,
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      '${movieItemResponse.releaseDate}',
-                      style: text18,
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(5.0),
+                //   child: Text(
+                //     'Release Date: ',
+                //     style: text18,
+                //   ),
+                // ),
+                // Expanded(
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(5.0),
+                //     child: Text(
+                //       '${movie.releaseDate}',
+                //       maxLines: 2,
+                //       style: text15,
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: CircularPercentIndicator(
@@ -73,7 +75,7 @@ class MovieNowPlayingHorizontalListItemWidget extends StatelessWidget {
                     animation: true,
                     percent: 0.7,
                     center: Text(
-                      '${movieItemResponse.voteAverage}',
+                      '${movie.rating}',
                       style: text15,
                     ),
                     circularStrokeCap: CircularStrokeCap.round,

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_apps/ui/_model/movie_item.dart';
 
-const String boxNameFavoriteMovies = 'Cerret';
+const String boxnamefavoritemovies = 'Carrot';
 
 class HiveDb {
   Future<void> initHiveDatabase() async {
@@ -17,7 +17,7 @@ class HiveDb {
   }
 
   Future<void> _openMovieItemBox() async {
-    await Hive.openBox<MovieItem>(boxNameFavoriteMovies);
+    await Hive.openBox<MovieItem>(boxnamefavoritemovies);
   }
 
   ///=============

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 import 'package:movie_apps/ui/_model/movie_item.dart';
 import 'package:movie_apps/ui/movie_detail/movie_detail_screen.dart';
 import 'package:movie_apps/ui/popular_movies/movieGridWidget/movie_gridview_widget.dart';

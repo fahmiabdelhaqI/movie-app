@@ -38,7 +38,7 @@ class _CollapsingAppBarState extends State<CollapsingAppBar> {
       elevation: 0.0,
       expandedHeight: widget.expandedHeight,
       floating: false,
-      title: _appBarTitle(),
+      // title: _appBarTitle(),
       pinned: true,
       actions: [
         IconButton(

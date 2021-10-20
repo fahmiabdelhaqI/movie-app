@@ -24,7 +24,7 @@ class SliverViewWidget extends StatefulWidget {
 }
 
 const double _silverAppBarExtendedHeight = 300.0;
-const double _paddingTopOfTitle = 20.0;
+const double _paddingTopOfTitle = 0.0;
 
 class _SliverViewWidgetState extends State<SliverViewWidget> {
   final _scrollDistance = _silverAppBarExtendedHeight - kToolbarHeight;

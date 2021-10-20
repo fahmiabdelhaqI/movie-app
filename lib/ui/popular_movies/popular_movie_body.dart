@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 
-import '../../data/movies/movie_api_client.dart';
+import '../../data/movies/remote/movie_api_client.dart';
 import '../_model/movie_item.dart';
 
 class MovieGridItemWidget extends StatelessWidget {

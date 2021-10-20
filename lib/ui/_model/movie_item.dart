@@ -25,7 +25,7 @@ class MovieItem {
     required this.id,
     required this.image,
     required this.title,
-    required this.rating,
+    this.rating = 0,
     required this.releaseDate,
   });
 

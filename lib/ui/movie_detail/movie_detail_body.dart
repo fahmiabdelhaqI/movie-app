@@ -5,13 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:movie_apps/data/movies/local/movie_local_data_source.dart';
 import 'package:movie_apps/data/movies/model/movie_detail_response.dart';
-
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 import 'package:movie_apps/ui/_model/movie_item.dart';
+import 'package:movie_apps/ui/_reusable/sliver/sliver_view_widget.dart';
 import 'package:movie_apps/ui/movie_detail/genres/movie_genre.dart';
 import 'package:movie_apps/ui/movie_detail/movie_info/movie_info.dart';
 import 'package:movie_apps/ui/movie_detail/product_companies/movie_product_companies.dart';
-import 'package:movie_apps/ui/popular_movies/sliver/sliver_view_widget.dart';
 import 'package:movie_apps/values/textstyle.dart';
 
 class MovieDetailBody extends StatefulWidget {
@@ -24,8 +23,8 @@ class MovieDetailBody extends StatefulWidget {
 }
 
 class _MovieDetailBodyState extends State<MovieDetailBody> {
-  final MovieApiClient _movieApiClient = MovieApiClient();
- MoviesLocalDataSource moviesLocalDataSource = MoviesLocalDataSourceImpl();
+  MovieApiClient _movieApiClient = MovieApiClient();
+  MoviesLocalDataSource moviesLocalDataSource = MoviesLocalDataSourceImpl();
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +42,9 @@ class _MovieDetailBodyState extends State<MovieDetailBody> {
                 bool isFavorite = favoritedIds.contains(movie.id);
 
                 return SliverViewWidget(
-                  title: movie.title ?? '',
+                  title:  '',
                   imageUrl: '$imagebaseurl${movie.posterPath}',
-                  body: _buildBody(movie),
+                  body: _buildBody(context, movie),
                   onFavoritePressed: () {
                     if (isFavorite) {
                       moviesLocalDataSource.deleteFromFavorite(
@@ -72,84 +71,91 @@ class _MovieDetailBodyState extends State<MovieDetailBody> {
     );
   }
 
-  Column _buildBody(MovieDetailResponse movie) {
+  Column _buildBody(BuildContext context, MovieDetailResponse movie) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          '${movie.title}',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
+        Container(
+          height: MediaQuery.of(context).size.height / 3,
+          width: 150,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+              image: NetworkImage('$imagebaseurl${movie.posterPath}'),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
-        SizedBox(height: 8),
-        Row(
-          children: [
-            Text(
-              '${movie.runtime} minutes',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-            ),
-            Expanded(child: SizedBox.shrink()),
-            Row(
-              children: [
-                FaIcon(
-                  FontAwesomeIcons.solidStar,
-                  color: Colors.amberAccent,
-                  size: 12,
-                ),
-                SizedBox(width: 4),
-                Text(
-                  '${movie.voteAverage}',
-                  style: TextStyle(),
-                ),
-              ],
-            ),
-          ],
+        // CachedNetworkImage(
+        //   imageUrl: '$imagebaseurl${movie.posterPath}',
+        //   fit: BoxFit.cover,
+        //   width: double.infinity,
+        //   height: 250,
+        // ),
+        const SizedBox(
+          height: 10,
         ),
-        SizedBox(height: 8),
-        Wrap(
-          spacing: 8,
-          runSpacing: 6,
-          children: movie.genres
-                  ?.map((e) => Chip(label: Text(e.name ?? '')))
-                  .toList() ??
-              [],
-        ),
-        SizedBox(height: 16),
-        Text(
-          '${movie.overview}',
-          style: TextStyle(
-            fontSize: 14,
-          ),
-        ),
-        SizedBox(height: 16),
         SizedBox(
-          height: 54,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: movie.productionCompanies
-                    ?.map(
-                      (e) => CachedNetworkImage(
-                        imageUrl: "$imagebaseurl${e.logoPath}",
-                        height: 54,
-                      ),
-                    )
-                    .toList() ??
-                [],
+          height: 30,
+          child: Text(
+            '${movie.originalTitle}',
+            style: text18,
           ),
         ),
-        Text(
-          '${movie.productionCompanies?.map((e) => e.name)}',
-          style: TextStyle(
-            fontSize: 14,
+
+        SizedBox(
+          height: 30,
+          child: MovieGenre(
+            movieDetailResponse: movie,
+          ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 6,
+          child: Text(
+            '${movie.overview}',
+            style: text15,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        RatingBar.builder(
+          initialRating: 3,
+          minRating: 1,
+          direction: Axis.horizontal,
+          allowHalfRating: true,
+          itemCount: 5,
+          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+          itemBuilder: (context, _) => const Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+          onRatingUpdate: (rateMovie) {
+            _movieApiClient.rateMovie(
+                movieId: movie.id.toString(), rating: rateMovie);
+            print(rateMovie);
+          },
+        ),
+        InfoMovieWidget(movie: movie),
+        const SizedBox(
+          height: 10,
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              'PRODUCTION COMPANY ',
+              style: text18,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 200,
+          child: MovieProductCompaniesWidget(
+            movieDetailResponse: movie,
           ),
         ),
       ],
     );
   }
 }
-

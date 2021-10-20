@@ -4,9 +4,9 @@ import 'package:movie_apps/data/dio_logging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart'
     hide Options;
 import 'package:movie_apps/data/movies/model/list_response.dart';
-import 'package:movie_apps/data/movies/model/movie_detail_response.dart';
-import 'package:movie_apps/data/movies/model/movie_genres.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
+
+import '../model/movie_detail_response.dart';
 
 const String baseurl = 'https://api.themoviedb.org/3';
 const String imagebaseurl = 'https://image.tmdb.org/t/p/w500';

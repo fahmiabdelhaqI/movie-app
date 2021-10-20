@@ -16,14 +16,15 @@ class _FavoriteMoviesScreenState extends State<FavoriteMoviesScreen> {
   final MoviesLocalDataSource moviesLocalDataSource =
       MoviesLocalDataSourceImpl();
 
-  // List<MovieItem> movies = [];
+  List<MovieItem> movies = [];
   @override
   void initState() {
     super.initState();
 
-    // movies = moviesLocalDataSource.listFavorite();
+     movies = moviesLocalDataSource.listFavorite();
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

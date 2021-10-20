@@ -23,9 +23,9 @@ class MovieDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(args.movieName),
-      ),
+      // appBar: AppBar(
+      //   title: Text(args.movieName),
+      // ),
       body: MovieDetailBody(movieId: args.movieId),
     );
   }

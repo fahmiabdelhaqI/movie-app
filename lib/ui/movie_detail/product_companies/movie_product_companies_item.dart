@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_detail_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 import 'package:movie_apps/values/textstyle.dart';
 
 class MovieProductComaniesItem extends StatelessWidget {

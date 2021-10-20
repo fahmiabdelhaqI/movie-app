@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_apps/ui/home/components/now_playing_movie_section.dart';
-import 'package:movie_apps/ui/home/components/popular_movie_section.dart';
+import 'package:movie_apps/ui/home/components/nowplaying/now_playing_movie_section.dart';
+import 'package:movie_apps/ui/home/components/popular/popular_movie_section.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);

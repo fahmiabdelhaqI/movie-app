@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/ui/_reusable/movie_horizontal_listitem_widget.dart';
+import 'package:movie_apps/ui/home/components/popular/movie_horizontal_listitem_widget.dart';
 import 'package:movie_apps/ui/movie_detail/movie_detail_screen.dart';
 
 class MovieHorizontalListViewWidget extends StatelessWidget {

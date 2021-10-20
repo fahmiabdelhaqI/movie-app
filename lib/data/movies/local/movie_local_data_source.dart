@@ -23,31 +23,31 @@ class MoviesLocalDataSourceImpl implements MoviesLocalDataSource {
 
   @override
   void addToFavorite(MovieItem movie) {
-    hiveDb.add<MovieItem>(boxName: boxNameFavoriteMovies, value: movie);
+    hiveDb.add<MovieItem>(boxName: boxnamefavoritemovies, value: movie);
   }
 
   @override
   void deleteFromFavorite(String key) {
-    hiveDb.delete<MovieItem>(boxName: boxNameFavoriteMovies, key: key);
+    hiveDb.delete<MovieItem>(boxName: boxnamefavoritemovies, key: key);
   }
 
   @override
   MovieItem getFavorite(String key) {
-    return hiveDb.get(boxName: boxNameFavoriteMovies, key: key);
+    return hiveDb.get(boxName: boxnamefavoritemovies, key: key);
   }
 
   @override
   List<MovieItem> listFavorite() {
-    return hiveDb.list(boxName: boxNameFavoriteMovies);
+    return hiveDb.list(boxName: boxnamefavoritemovies);
   }
 
   @override
   ValueListenable<Box<MovieItem>> listenable() {
-    return hiveDb.listenable(boxName: boxNameFavoriteMovies);
+    return hiveDb.listenable(boxName: boxnamefavoritemovies);
   }
 
   @override
   void putToFavorite(String key, MovieItem movie) {
-    hiveDb.put(boxName: boxNameFavoriteMovies, key: key, value: movie);
+    hiveDb.put(boxName: boxnamefavoritemovies, key: key, value: movie);
   }
 }

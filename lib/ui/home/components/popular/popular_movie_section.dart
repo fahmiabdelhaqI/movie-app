@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
 import 'package:movie_apps/data/movies/model/movie_item_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
-import 'package:movie_apps/ui/_reusable/movie_horizontal_listview_widget.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
+import 'package:movie_apps/ui/home/components/popular/movie_horizontal_listview_widget.dart';
 import 'package:movie_apps/ui/popular_movies/popular_movie_screen.dart';
 import 'package:movie_apps/values/textstyle.dart';
 

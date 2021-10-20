@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_apps/data/movies/model/movie_detail_response.dart';
-import 'package:movie_apps/data/movies/movie_api_client.dart';
+import 'package:movie_apps/data/movies/remote/movie_api_client.dart';
 import 'package:movie_apps/ui/movie_detail/genres/movie_genre_item.dart';
 
 class MovieGenre extends StatelessWidget {
